@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class AnimatorManager : MonoBehaviour
 {
-    Animator animator;
+    public Animator animator;
+    public TwoBoneIKConstraint rightHandIK;
+    public TwoBoneIKConstraint leftHandIK;
+
+    RigBuilder rb;
     PlayerLocomotionManager manager;
 
     float snappedHorizontal;
@@ -14,6 +19,7 @@ public class AnimatorManager : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         manager = GetComponent<PlayerLocomotionManager>();
+        rb = GetComponent<RigBuilder>();
     }
 
     public void PlayAnimationWithoutRootMotion(string targetAnimation, bool isPerformingAction)
@@ -56,9 +62,16 @@ public class AnimatorManager : MonoBehaviour
             snappedVertical = 2;
         }
 
-        animator.SetFloat("InputX", snappedHorizontal, 0.1f, Time.deltaTime);
-        animator.SetFloat("InputY", snappedVertical, 0.1f, Time.deltaTime);
+        animator.SetFloat("InputX", snappedHorizontal, 0.08f, Time.deltaTime);
+        animator.SetFloat("InputY", snappedVertical, 0.08f, Time.deltaTime);
 
+    }
+
+    public void AssignHandIK(RightHandIKTarget rightTarget, LeftHandIKTarget leftTarget)
+    {
+        rightHandIK.data.target = rightTarget.transform;
+        leftHandIK.data.target = leftTarget.transform;
+        rb.Build();
     }
 
     private void OnAnimatorMove()
