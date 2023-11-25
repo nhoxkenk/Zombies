@@ -17,6 +17,8 @@ public class InputManager : MonoBehaviour
     [Header("Button Inputs")]
     public bool runInput;
     public bool quickTurnInput;
+    public bool aimingInput;
+    public bool shootingInput;
 
     private void Awake()
     {
@@ -35,6 +37,10 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerMovements.Run.performed += i => runInput = true;
             playerControls.PlayerMovements.Run.canceled += i => runInput = false;
             playerControls.PlayerMovements.QuickTurn.performed += i => quickTurnInput = true;
+            playerControls.PlayerActions.Aim.performed += i => aimingInput = true;
+            playerControls.PlayerActions.Aim.canceled += i => aimingInput = false;
+            playerControls.PlayerActions.Shoot.performed += i => shootingInput = true;
+            playerControls.PlayerActions.Shoot.canceled += i => shootingInput = false;
         }
 
         playerControls.Enable();
@@ -49,6 +55,8 @@ public class InputManager : MonoBehaviour
     {
         HandleMovementInput();
         HandleQuickTurnInput();
+        HandleAimingInput();
+        HandleShootingInput();
     }
 
     private void HandleMovementInput()
@@ -71,5 +79,37 @@ public class InputManager : MonoBehaviour
             animatorManager.PlayAnimationWithoutRootMotion("Quick Turn",true);
         }
 
+    }
+
+    private void HandleAimingInput()
+    {
+        if (verticalMovementInput != 0 || horizontalMovementInput != 0)
+        {
+            aimingInput = false;
+            animator.SetBool("isAiming", false);
+            return;
+        }
+
+        if (aimingInput)
+        {
+            animator.SetBool("isAiming", true);
+        }
+        else
+        {
+            animator.SetBool("isAiming", false);
+        }
+
+        animatorManager.UpdateAimConstraint();
+    }
+
+    private void HandleShootingInput()
+    {
+        //check if the weapon type is semi-auto or auto.
+        if (shootingInput && aimingInput)
+        {
+            Debug.Log("Bang");
+            shootingInput = false;
+            playerManager.UseCurrentWeapon();
+        }
     }
 }

@@ -6,10 +6,11 @@ public class PlayerEquipmentManager : MonoBehaviour
 {
     AnimatorManager animatorManager;
     WeaponLoaderSlot weaponLoaderSlot;
-    RightHandIKTarget rightTarget;
-    LeftHandIKTarget leftTarget;
     [Header("Current Equipment")]
     public WeaponItem weapon;
+    public WeaponAnimatorManager weaponAnimatorManager;
+    RightHandIKTarget rightTarget;
+    LeftHandIKTarget leftTarget;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class PlayerEquipmentManager : MonoBehaviour
     {
         weaponLoaderSlot.LoadWeaponModel(weapon);
         animatorManager.animator.runtimeAnimatorController = weapon.weaponAnimator;
+        weaponAnimatorManager = weaponLoaderSlot.currentWeaponModel.GetComponentInChildren<WeaponAnimatorManager>();
         rightTarget = weaponLoaderSlot.currentWeaponModel.GetComponentInChildren<RightHandIKTarget>();
         leftTarget = weaponLoaderSlot.currentWeaponModel.GetComponentInChildren<LeftHandIKTarget>();
         animatorManager.AssignHandIK(rightTarget, leftTarget);

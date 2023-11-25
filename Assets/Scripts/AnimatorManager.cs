@@ -6,11 +6,16 @@ using UnityEngine.Animations.Rigging;
 public class AnimatorManager : MonoBehaviour
 {
     public Animator animator;
+    [Header("Hand IK Constraint")]
     public TwoBoneIKConstraint rightHandIK;
     public TwoBoneIKConstraint leftHandIK;
 
+    [Header("Rig layer for rotate bone when aiming")]
+    public Rig rigLayer_BodyAim;
+
     RigBuilder rb;
-    PlayerLocomotionManager manager;
+    PlayerManager playerManager;
+    PlayerLocomotionManager locomotionManager;
 
     float snappedHorizontal;
     float snappedVertical;
@@ -18,7 +23,8 @@ public class AnimatorManager : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        manager = GetComponent<PlayerLocomotionManager>();
+        playerManager = GetComponent<PlayerManager>();
+        locomotionManager = GetComponent<PlayerLocomotionManager>();
         rb = GetComponent<RigBuilder>();
     }
 
@@ -74,14 +80,26 @@ public class AnimatorManager : MonoBehaviour
         rb.Build();
     }
 
+    public void UpdateAimConstraint()
+    {
+        if (playerManager.isAiming)
+        {
+            rigLayer_BodyAim.weight += Time.deltaTime;
+        }
+        else
+        {
+            rigLayer_BodyAim.weight -= Time.deltaTime;
+        }
+    }
+
     private void OnAnimatorMove()
     {
         Vector3 animatorDeltaPosition = animator.deltaPosition;
         animatorDeltaPosition.y = 0;
 
         Vector3 velocity = animatorDeltaPosition / Time.deltaTime;
-        manager.playerRigidbody.drag = 0;
-        manager.playerRigidbody.velocity = velocity;
+        locomotionManager.playerRigidbody.drag = 0;
+        locomotionManager.playerRigidbody.velocity = velocity;
         transform.rotation *= animator.deltaRotation;
     }
 }
