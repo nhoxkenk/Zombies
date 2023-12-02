@@ -40,11 +40,11 @@ public class WeaponLoaderSlot : MonoBehaviour
         {
             case "Weapon_Rifle":
                 multiPositionConstraintPose.data.offset = new Vector3(0.05f, -0.2f, 0.2f);
-                multiPositionConstraintAiming.data.offset = new Vector3(0.05f, 0f, 0.3f);
+                multiPositionConstraintAiming.data.offset = new Vector3(0.1f, 0f, 0.35f);
                 break;
             case "Weapon_Pistol":
                 multiPositionConstraintPose.data.offset = new Vector3(0.1f, 0.05f, 0.2f);
-                multiPositionConstraintAiming.data.offset = new Vector3(0.05f, 0.1f, 0.4f);
+                multiPositionConstraintAiming.data.offset = new Vector3(0.1f, 0.1f, 0.55f);
                 break;
         }
 

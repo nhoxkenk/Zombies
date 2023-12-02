@@ -29,7 +29,7 @@ public class WeaponAnimatorManager : MonoBehaviour
 
     public void ShootWeapon()
     {
-        weaponAnimator.Play("Fire");
+        weaponAnimator.Play("Shoot");
 
         //MUZZLE FLASH
         weaponMuzzleFlashFX.Play();

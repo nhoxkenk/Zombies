@@ -9,5 +9,7 @@ AnimatorOverrideController:
   m_Name: Rifle
   m_Controller: {fileID: 9100000, guid: e864e94efd07f5747b50234faf1c13c1, type: 2}
   m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 303c86a67088e0e4c881ad8baac84045, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 36d911fe143bfbf4a91cd1f3cecd2625, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 938a863f8c4ef2548a37b162ef3fc0da, type: 2}
     m_OverrideClip: {fileID: 7400004, guid: da29dc06830beb446bcfafbf72a11bc7, type: 3}

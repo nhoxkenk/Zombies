@@ -87,16 +87,19 @@ public class InputManager : MonoBehaviour
         {
             aimingInput = false;
             animator.SetBool("isAiming", false);
+            animator.SetLayerWeight(2, 0.0f);
             return;
         }
 
         if (aimingInput)
         {
             animator.SetBool("isAiming", true);
+            animator.SetLayerWeight(2, 1.0f);
         }
         else
         {
             animator.SetBool("isAiming", false);
+            animator.SetLayerWeight(2, 0.0f);
         }
 
         animatorManager.UpdateAimConstraint();
@@ -105,10 +108,12 @@ public class InputManager : MonoBehaviour
     private void HandleShootingInput()
     {
         //check if the weapon type is semi-auto or auto.
+        string weaponName = playerManager.GetCurrentWeaponName();
         if (shootingInput && aimingInput)
         {
             Debug.Log("Bang");
-            shootingInput = false;
+            if (weaponName != "Rifle")
+                shootingInput = false;
             playerManager.UseCurrentWeapon();
         }
     }

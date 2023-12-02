@@ -39,4 +39,9 @@ public class PlayerManager : MonoBehaviour
     {
         equipmentManager.weaponAnimatorManager.ShootWeapon();
     }
+
+    public string GetCurrentWeaponName()
+    {
+        return equipmentManager.weapon.itemName;
+    }
 }
