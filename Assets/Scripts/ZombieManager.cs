@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ZombieManager : MonoBehaviour
 {
@@ -11,14 +12,39 @@ public class ZombieManager : MonoBehaviour
 
     [Header("Current target")]
     public PlayerManager currentTarget;
+    public float distanceFromCurrentTarget;
+
+    public Animator animator;
+
+    public NavMeshAgent agent;
+
+    public Rigidbody zombieRigidbody;
+
+    [Header("Locomotion")]
+    public float rotationSpeed = 5;
+
+    [Header("Attack")]
+    public float miniumAttackDistance = 1f;
 
     private void Awake()
     {
         currentState = startingState;
+        animator = GetComponent<Animator>();
+        agent = GetComponentInChildren<NavMeshAgent>();
+        zombieRigidbody = GetComponent<Rigidbody>();
     }
     private void FixedUpdate()
     {
         HandleStateMachine();
+    }
+    private void Update()
+    {
+        agent.transform.localPosition = Vector3.zero;
+
+        if(currentTarget != null)
+        {
+            distanceFromCurrentTarget = Vector3.Distance(currentTarget.transform.position, transform.position);
+        }
     }
 
     private void HandleStateMachine()

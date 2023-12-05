@@ -10,6 +10,9 @@ public class IdleState : State
     [Header("Detection Layer")]
     [SerializeField] LayerMask detectionLayer;
 
+    [Header("Eye height")]
+    [SerializeField]float characterEyeHeight = 1.7f;
+
     //How far away we can detect a target
     [Header("Detection Radius")]
     [SerializeField] float detectionRadius = 5;
@@ -50,11 +53,11 @@ public class IdleState : State
         //For every collider that we find, that is on the same layer of the player, we can try and search it for a PlayerManager script
         for(int i = 0; i < colliders.Length; i++)
         {
-            PlayerManager player = colliders[i].GetComponent<PlayerManager>();
+            PlayerManager player = colliders[i].transform.GetComponent<PlayerManager>();
 
             if (player != null)
             {
-                Debug.Log("Found the player collider");
+                Debug.Log("Found the player collider ");
                 //The target must be in front of us
                 Vector3 targetDirection = transform.position - player.transform.position;
                 float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
@@ -65,21 +68,21 @@ public class IdleState : State
                     Debug.Log("We have passed the field of view check");
 
                     RaycastHit hit;
-                    float characterHeight = 2f;
+
                     //Secure that the line does not hit the floor
-                    Vector3 playerStartPoint = new Vector3(player.transform.position.x, characterHeight, player.transform.position.z);
-                    Vector3 zombieStartPoint = new Vector3(transform.position.x, characterHeight, transform.position.z);
+                    Vector3 playerStartPoint = new Vector3(player.transform.position.x, characterEyeHeight, player.transform.position.z);
+                    Vector3 zombieStartPoint = new Vector3(transform.position.x, characterEyeHeight, transform.position.z);
 
                     Debug.DrawLine(playerStartPoint, zombieStartPoint, Color.red);
 
                     //Check one last time for object block zombie view
-                    if(Physics.Linecast(zombieStartPoint, playerStartPoint, out hit))
+                    if(Physics.Linecast(zombieStartPoint, playerStartPoint, out hit) && hit.transform.gameObject.name != "Character")
                     {
-                        Debug.Log("There is something in the way");
+                        Debug.Log("There is something in the way ");
                     }
                     else
                     {
-                        Debug.Log("We had found the target, switching state");
+                        Debug.Log("We had found the target, switching state ");
                         zombieManager.currentTarget = player;
                     }
 
