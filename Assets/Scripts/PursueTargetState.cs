@@ -12,12 +12,20 @@ public class PursueTargetState : State
     }
     public override State Tick(ZombieManager zombieManager)
     {
+        //cannot do two things at the same time, like playing hit animation along with run, etc...
+        if (zombieManager.isPerformingAction)
+        {
+            zombieManager.animator.SetFloat("Vertical", 0, 0.2f, Time.deltaTime);
+            return this;
+        }
+
         Debug.Log("RUNNING the pursue target state");
         MoveTowardsCurrentTarget(zombieManager);
         RotateTowardsTarget(zombieManager);
 
-        if(zombieManager.distanceFromCurrentTarget <= zombieManager.miniumAttackDistance)
+        if(zombieManager.distanceFromCurrentTarget <= zombieManager.maximumAttackDistance)
         {
+            zombieManager.agent.enabled = false;
             return attackState;
         }
         else

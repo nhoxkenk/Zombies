@@ -10,8 +10,9 @@ public class IdleState : State
     [Header("Detection Layer")]
     [SerializeField] LayerMask detectionLayer;
 
-    [Header("Eye height")]
+    [Header("Line of sight detection")]
     [SerializeField]float characterEyeHeight = 1.7f;
+    [SerializeField] LayerMask ignoreForLineOfSight;
 
     //How far away we can detect a target
     [Header("Detection Radius")]
@@ -76,7 +77,7 @@ public class IdleState : State
                     Debug.DrawLine(playerStartPoint, zombieStartPoint, Color.red);
 
                     //Check one last time for object block zombie view
-                    if(Physics.Linecast(zombieStartPoint, playerStartPoint, out hit) && hit.transform.gameObject.name != "Character")
+                    if(Physics.Linecast(zombieStartPoint, playerStartPoint, out hit, ignoreForLineOfSight))
                     {
                         Debug.Log("There is something in the way ");
                     }

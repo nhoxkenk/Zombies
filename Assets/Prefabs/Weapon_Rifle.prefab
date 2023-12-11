@@ -340,6 +340,10 @@ MonoBehaviour:
   weaponMuzzleFlashFX: {fileID: 680537272578790068}
   weaponBulletCaseFX: {fileID: 6039811041802242250}
   weaponDrill: {fileID: 420478385691849496}
+  bulletRange: 100
+  shootableLayer:
+    serializedVersion: 2
+    m_Bits: 8064
 --- !u!1 &3519085058784414534
 GameObject:
   m_ObjectHideFlags: 0

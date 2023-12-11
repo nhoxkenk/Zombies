@@ -5,14 +5,20 @@ using UnityEngine.AI;
 
 public class ZombieManager : MonoBehaviour
 {
+    public ZombieAnimatorManager zombieAnimatorManager;
     public IdleState startingState;
+
+    [Header("Flag")]
+    public bool isPerformingAction;
 
     [Header("Current state")]
     private State currentState;
 
     [Header("Current target")]
     public PlayerManager currentTarget;
+    public Vector3 targetDirection;
     public float distanceFromCurrentTarget;
+    public float viewableAngleFromCurrentTarget;
 
     public Animator animator;
 
@@ -24,7 +30,9 @@ public class ZombieManager : MonoBehaviour
     public float rotationSpeed = 5;
 
     [Header("Attack")]
-    public float miniumAttackDistance = 1f;
+    public float attackCooldownTimer;
+    public float miniumAttackDistance = 0.5f;
+    public float maximumAttackDistance = 1f;
 
     private void Awake()
     {
@@ -32,6 +40,7 @@ public class ZombieManager : MonoBehaviour
         animator = GetComponent<Animator>();
         agent = GetComponentInChildren<NavMeshAgent>();
         zombieRigidbody = GetComponent<Rigidbody>();
+        zombieAnimatorManager = GetComponent<ZombieAnimatorManager>();
     }
     private void FixedUpdate()
     {
@@ -41,8 +50,15 @@ public class ZombieManager : MonoBehaviour
     {
         agent.transform.localPosition = Vector3.zero;
 
+        if(attackCooldownTimer > 0 )
+        {
+            attackCooldownTimer -= Time.deltaTime;
+        }
+
         if(currentTarget != null)
         {
+            targetDirection = currentTarget.transform.position - transform.position;
+            viewableAngleFromCurrentTarget = Vector3.SignedAngle(targetDirection, transform.forward, Vector3.up);
             distanceFromCurrentTarget = Vector3.Distance(currentTarget.transform.position, transform.position);
         }
     }
