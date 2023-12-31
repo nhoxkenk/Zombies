@@ -6,10 +6,12 @@ using UnityEngine.AI;
 public class ZombieManager : MonoBehaviour
 {
     public ZombieAnimatorManager zombieAnimatorManager;
+    public ZombieStatManager zombieStatManager;
     public IdleState startingState;
 
     [Header("Flag")]
     public bool isPerformingAction;
+    public bool isDead;
 
     [Header("Current state")]
     private State currentState;
@@ -41,10 +43,12 @@ public class ZombieManager : MonoBehaviour
         agent = GetComponentInChildren<NavMeshAgent>();
         zombieRigidbody = GetComponent<Rigidbody>();
         zombieAnimatorManager = GetComponent<ZombieAnimatorManager>();
+        zombieStatManager = GetComponent<ZombieStatManager>();
     }
     private void FixedUpdate()
     {
-        HandleStateMachine();
+        if(!isDead)
+            HandleStateMachine();
     }
     private void Update()
     {

@@ -35,6 +35,12 @@ public class AnimatorManager : MonoBehaviour
         animator.CrossFade(targetAnimation, 0.1f);
     }
 
+    public void PlayAnimation(string targetAnimation, bool isPerformingAction)
+    {
+        animator.SetBool("isPerformingAction", isPerformingAction);
+        animator.CrossFade(targetAnimation, 0.1f);
+    }
+
     public void HandleAnimatorValues(float horizontalMovement, float verticalMovement, bool isRunning)
     {
         if (horizontalMovement > 0)
@@ -78,6 +84,24 @@ public class AnimatorManager : MonoBehaviour
         rightHandIK.data.target = rightTarget.transform;
         leftHandIK.data.target = leftTarget.transform;
         rb.Build();
+    }
+
+    public void ClearHandIK()
+    {
+        //rightHandIK.data.targetPositionWeight = 0;
+        //rightHandIK.data.targetRotationWeight = 0;
+
+        leftHandIK.data.targetPositionWeight = 0;
+        leftHandIK.data.targetRotationWeight = 0;
+    }
+
+    public void RefreshHandIK()
+    {
+        //rightHandIK.data.targetPositionWeight = 1;
+        //rightHandIK.data.targetRotationWeight = 1;
+
+        leftHandIK.data.targetPositionWeight = 1;
+        leftHandIK.data.targetRotationWeight = 1;
     }
 
     public void UpdateAimConstraint()

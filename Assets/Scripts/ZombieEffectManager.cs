@@ -11,39 +11,69 @@ public class ZombieEffectManager : MonoBehaviour
         zombieManager = GetComponent<ZombieManager>();    
     }
 
-    public void ZombieDamagedHead()
+    public void ZombieDamagedHead(int damage)
     {
-        zombieManager.isPerformingAction = true;
-        zombieManager.animator.CrossFade("Zombie Hit Head", 0.2f);
+        if(!zombieManager.isDead)
+        {
+            zombieManager.isPerformingAction = true;
+            zombieManager.animator.CrossFade("Zombie Hit Head", 0.2f);
+            zombieManager.zombieStatManager.DamageDealToHead(damage);
+        }
+        
     }
 
-    public void ZombieDamagedTorso()
+    public void ZombieDamagedTorso(int damage)
     {
-        zombieManager.isPerformingAction = true;
-        zombieManager.animator.CrossFade("Zombie Hit Torso", 0.2f);
+        if (!zombieManager.isDead)
+        {
+            zombieManager.isPerformingAction = true;
+            zombieManager.animator.CrossFade("Zombie Hit Torso", 0.2f);
+            zombieManager.zombieStatManager.DamageDealToTorso(damage);
+        }
+        
     }
 
-    public void ZombieDamagedLeftArm()
+    public void ZombieDamagedLeftArm(int damage)
     {
-        zombieManager.isPerformingAction = true;
-        zombieManager.animator.CrossFade("Zombie Hit Head", 0.2f);
+        if (!zombieManager.isDead)
+        {
+            zombieManager.isPerformingAction = true;
+            zombieManager.animator.CrossFade("Zombie Hit Head", 0.2f);
+            zombieManager.zombieStatManager.DamageDealToArm(true, damage);
+        }
+        
     }
 
-    public void ZombieDamagedRightArm()
+    public void ZombieDamagedRightArm(int damage)
     {
-        zombieManager.isPerformingAction = true;
-        zombieManager.animator.CrossFade("Zombie Hit Head", 0.2f);
+        if (!zombieManager.isDead)
+        {
+            zombieManager.isPerformingAction = true;
+            zombieManager.animator.CrossFade("Zombie Hit Head", 0.2f);
+            zombieManager.zombieStatManager.DamageDealToArm(false, damage);
+        }
+        
     }
 
-    public void ZombieDamagedLeftLeg()
+    public void ZombieDamagedLeftLeg(int damage)
     {
-        zombieManager.isPerformingAction = true;
-        zombieManager.animator.CrossFade("Zombie Hit Head", 0.2f);
+        if (!zombieManager.isDead)
+        {
+            zombieManager.isPerformingAction = true;
+            zombieManager.animator.CrossFade("Zombie Hit Head", 0.2f);
+            zombieManager.zombieStatManager.DamageDealToLeg(true, damage);
+        }
+        
     }
 
-    public void ZombieDamagedRightLeg()
+    public void ZombieDamagedRightLeg(int damage)
     {
-        zombieManager.isPerformingAction = true;
-        zombieManager.animator.CrossFade("Zombie Hit Head", 0.2f);
+        if (!zombieManager.isDead)
+        {
+            zombieManager.isPerformingAction = true;
+            zombieManager.animator.CrossFade("Zombie Hit Head", 0.2f);
+            zombieManager.zombieStatManager.DamageDealToLeg(false, damage);
+        }
+        
     }
 }

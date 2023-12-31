@@ -16,4 +16,11 @@ public class ZombieAnimatorManager : MonoBehaviour
         zombieManager.isPerformingAction = true;
         zombieManager.animator.CrossFade(attackAnimation, 0.2f);
     }
+
+    public void PlayTargetActionAnimation(string attackAnimation)
+    {
+        zombieManager.animator.applyRootMotion = true;
+        zombieManager.isPerformingAction = true;
+        zombieManager.animator.CrossFade(attackAnimation, 0.2f);
+    }
 }

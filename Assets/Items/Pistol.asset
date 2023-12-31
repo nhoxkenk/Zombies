@@ -15,3 +15,5 @@ MonoBehaviour:
   itemName: Pistol
   itemModel: {fileID: 5508493639216606010, guid: c92a39668fe05a3488664d1bfb44999f, type: 3}
   weaponAnimator: {fileID: 22100000, guid: a234635753acc054cb429ef9797fedde, type: 2}
+  damage: 20
+  remainingAmmo: 20

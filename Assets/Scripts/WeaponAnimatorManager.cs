@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponAnimatorManager : MonoBehaviour
 {
+    PlayerManager playerManager;
     Animator weaponAnimator;
 
     public Transform raycastOrigin;
@@ -26,6 +27,7 @@ public class WeaponAnimatorManager : MonoBehaviour
     private void Awake()
     {
         weaponAnimator = GetComponentInChildren<Animator>();
+        playerManager = GetComponentInParent<PlayerManager>();
     }
 
     private void Start()
@@ -56,32 +58,32 @@ public class WeaponAnimatorManager : MonoBehaviour
                 {
                     case 7:
                         {
-                            zombieEffectManager.ZombieDamagedHead();
+                            zombieEffectManager.ZombieDamagedHead(playerManager.equipmentManager.weapon.damage);
                             break;
                         }
                     case 8:
                         {
-                            zombieEffectManager.ZombieDamagedTorso();
+                            zombieEffectManager.ZombieDamagedTorso(playerManager.equipmentManager.weapon.damage);
                             break;
                         }
                     case 9:
                         {
-                            zombieEffectManager.ZombieDamagedRightArm();
+                            zombieEffectManager.ZombieDamagedRightArm(playerManager.equipmentManager.weapon.damage);
                             break;
                         }
                     case 10:
                         {
-                            zombieEffectManager.ZombieDamagedLeftArm();
+                            zombieEffectManager.ZombieDamagedLeftArm(playerManager.equipmentManager.weapon.damage);
                             break;
                         }
                     case 11:
                         {
-                            zombieEffectManager.ZombieDamagedRightLeg();
+                            zombieEffectManager.ZombieDamagedRightLeg(playerManager.equipmentManager.weapon.damage);
                             break;
                         }
                     case 12:
                         {
-                            zombieEffectManager.ZombieDamagedLeftLeg();
+                            zombieEffectManager.ZombieDamagedLeftLeg(playerManager.equipmentManager.weapon.damage);
                             break;
                         }
                 }
