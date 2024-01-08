@@ -22,6 +22,7 @@ public class InputManager : MonoBehaviour
     public bool aimingInput;
     public bool shootingInput;
     public bool reloadInput;
+    public bool interactInput;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.Shoot.performed += i => shootingInput = true;
             playerControls.PlayerActions.Shoot.canceled += i => shootingInput = false;
             playerControls.PlayerActions.Reload.performed += i => reloadInput = true;
+            playerControls.PlayerActions.Interact.performed += i => interactInput = true;
         }
 
         playerControls.Enable();
@@ -62,6 +64,7 @@ public class InputManager : MonoBehaviour
         HandleAimingInput();
         HandleShootingInput();
         HandleReloadInput();
+        HandleInteractionInput();
     }
 
     private void HandleMovementInput()
@@ -175,6 +178,17 @@ public class InputManager : MonoBehaviour
             }
 
             
+        }
+    }
+
+    private void HandleInteractionInput()
+    {
+        if (interactInput)
+        {
+            if (!playerManager.canInteract)
+            {
+                interactInput = false;
+            }
         }
     }
 
