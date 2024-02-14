@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public class AnimatorManager : MonoBehaviour
+public class PlayerAnimatorManager : MonoBehaviour
 {
     public Animator animator;
     [Header("Hand IK Constraint")]
@@ -13,9 +13,13 @@ public class AnimatorManager : MonoBehaviour
     [Header("Rig layer for rotate bone when aiming")]
     public Rig rigLayer_BodyAim;
 
+    [Header("Rig layer hand")]
+    public Rig rigLayer_Hand;
+
     RigBuilder rb;
     PlayerManager playerManager;
     PlayerLocomotionManager locomotionManager;
+    WeaponLoaderSlot weaponLoaderSlot;
 
     float snappedHorizontal;
     float snappedVertical;
@@ -25,6 +29,7 @@ public class AnimatorManager : MonoBehaviour
         animator = GetComponent<Animator>();
         playerManager = GetComponent<PlayerManager>();
         locomotionManager = GetComponent<PlayerLocomotionManager>();
+        weaponLoaderSlot = GetComponent<WeaponLoaderSlot>();
         rb = GetComponent<RigBuilder>();
     }
 
@@ -93,6 +98,18 @@ public class AnimatorManager : MonoBehaviour
 
         leftHandIK.data.targetPositionWeight = 0;
         leftHandIK.data.targetRotationWeight = 0;
+    }
+
+    public void ClearRigLayerHand()
+    {
+        rigLayer_Hand.weight = 0;
+        weaponLoaderSlot.currentWeaponModel.SetActive(false);
+    }
+
+    public void RefreshRigLayerHand()
+    {
+        rigLayer_Hand.weight = 1;
+        weaponLoaderSlot.currentWeaponModel.SetActive(true);
     }
 
     public void RefreshHandIK()

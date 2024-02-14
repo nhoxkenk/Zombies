@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
     private Coroutine reloadCoroutine;
 
     PlayerControls playerControls;
-    AnimatorManager animatorManager;
+    PlayerAnimatorManager animatorManager;
     Animator animator;
     PlayerManager playerManager;
 
@@ -26,7 +26,7 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        animatorManager = GetComponent<AnimatorManager>();
+        animatorManager = GetComponent<PlayerAnimatorManager>();
         animator = GetComponent<Animator>();
         playerManager = GetComponent<PlayerManager>();
     }
@@ -168,8 +168,8 @@ public class InputManager : MonoBehaviour
 
                     //animation smooth
                     animator.SetLayerWeight(2, 0.0f);
-                    playerManager.animatorManager.ClearHandIK();
-                    playerManager.animatorManager.PlayAnimation("Reload_Pistol", true);
+                    playerManager.playerAnimatorManager.ClearHandIK();
+                    playerManager.playerAnimatorManager.PlayAnimation("Reload_Pistol", true);
                     //place more ammo in the weapon
                     playerManager.playerUIManager.currentAmmoCountText.text = playerManager.equipmentManager.weapon.remainingAmmo.ToString();
                     playerManager.playerUIManager.reservedAmmoCountText.text = playerManager.inventoryManager.currentAmmoInInventory.ammoRemaining.ToString();
@@ -197,7 +197,7 @@ public class InputManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.75f);
 
-        playerManager.animatorManager.RefreshHandIK();
+        playerManager.playerAnimatorManager.RefreshHandIK();
 
         StopCoroutine(reloadCoroutine);
     }

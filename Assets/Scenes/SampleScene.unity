@@ -193,7 +193,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105086154}
-  m_LocalRotation: {x: 0.1589504, y: -0.000000016987627, z: 0.0000000027349611, w: 0.98728657}
+  m_LocalRotation: {x: 0.1589504, y: 0.000000016987629, z: -0.0000000027349616, w: 0.98728657}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1915,7 +1915,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.15895042, y: -0.000000033975255, z: 0.0000000054699223, w: 0.98728657}
+  m_LocalRotation: {x: 0.15895042, y: 0.000000033975258, z: -0.000000005469923, w: 0.98728657}
   m_LocalPosition: {x: 5.4, y: 2.6424205, z: 1.5470788}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2041,7 +2041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieAttackActions: []
   potentialAttacks: []
-  currentAttack: {fileID: 11400000, guid: 395adb586b6fb584eaf29cabcbc77108, type: 2}
+  currentAttack: {fileID: 11400000, guid: 7e0f99bf58f89374dbb595b78ee0b08b, type: 2}
   hasPerformedAttack: 0
 --- !u!1 &1157897059
 GameObject:
@@ -3225,6 +3225,74 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764987054}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1813657447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1813657448}
+  - component: {fileID: 1813657449}
+  - component: {fileID: 1813657450}
+  m_Layer: 6
+  m_Name: Left Hand Grapple Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1813657448
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813657447}
+  m_LocalRotation: {x: -0.0024863502, y: -0.043879766, z: 0.056519285, w: 0.9974337}
+  m_LocalPosition: {x: -0.09982559, y: -0.0011595362, z: -0.032833364}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4665437460916944}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1813657449
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813657447}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1813657450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813657447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cfe35d46de0e7144bfc834d1d18ea6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameCollider: {fileID: 0}
+  isRightHandedGrappleCollider: 0
 --- !u!1 &1814927665
 GameObject:
   m_ObjectHideFlags: 0
@@ -3340,6 +3408,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Effectors: []
+--- !u!1 &1938791919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1938791920}
+  - component: {fileID: 1938791921}
+  - component: {fileID: 1938791922}
+  m_Layer: 6
+  m_Name: Right Hand Grapple Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1938791920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938791919}
+  m_LocalRotation: {x: -0.0024864282, y: -0.043879785, z: 0.056519236, w: 0.9974337}
+  m_LocalPosition: {x: 0.09982502, y: 0.0011599072, z: 0.03283333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4696758799761198}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1938791921
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938791919}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1938791922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938791919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cfe35d46de0e7144bfc834d1d18ea6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameCollider: {fileID: 0}
+  isRightHandedGrappleCollider: 1
 --- !u!1 &1952234580
 GameObject:
   m_ObjectHideFlags: 0
@@ -3909,6 +4045,7 @@ GameObject:
   - component: {fileID: 95365556374136254}
   - component: {fileID: 95365556374136255}
   - component: {fileID: 95365556374136256}
+  - component: {fileID: 95365556374136257}
   m_Layer: 6
   m_Name: Zombie_BioHazardSuit
   m_TagString: Untagged
@@ -5164,6 +5301,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1813657448}
   - {fileID: 4556775378982516}
   - {fileID: 4486102420218218}
   - {fileID: 4875069419277692}
@@ -5217,6 +5355,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1938791920}
   - {fileID: 4670463827772378}
   - {fileID: 4110638039199170}
   - {fileID: 4349215611578920}
@@ -5548,7 +5687,7 @@ MonoBehaviour:
   rotationSpeed: 5
   attackCooldownTimer: 0
   miniumAttackDistance: 1
-  maximumAttackDistance: 1
+  maximumAttackDistance: 3.5
 --- !u!136 &95365556374136252
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5643,6 +5782,20 @@ MonoBehaviour:
   rightArmHealth: 100
   leftLegHealth: 100
   rightLegHealth: 100
+--- !u!114 &95365556374136257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379516981387876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c2539633c4b4d48abc194abf4cb8d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHandGrappleCollider: {fileID: 0}
+  leftHandGrappleCollider: {fileID: 0}
 --- !u!137 &137037296147437654
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -8364,7 +8517,7 @@ GameObject:
   - component: {fileID: 652730575923552433}
   - component: {fileID: 652730575923552435}
   - component: {fileID: 652730575923552441}
-  - component: {fileID: 652730575923552436}
+  - component: {fileID: 652730575923552444}
   - component: {fileID: 652730575923552437}
   - component: {fileID: 652730575923552438}
   - component: {fileID: 652730575923552439}
@@ -9293,7 +9446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 0}
-  animatorManager: {fileID: 0}
+  playerAnimatorManager: {fileID: 0}
   playerUIManager: {fileID: 0}
   locomotionManager: {fileID: 0}
   equipmentManager: {fileID: 0}
@@ -9302,22 +9455,6 @@ MonoBehaviour:
   isPerformingQuickTurn: 0
   isAiming: 0
   canInteract: 0
---- !u!114 &652730575923552436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 652730575923372064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62f2ff2d28aff514ab5dc7d42d5106ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  rightHandIK: {fileID: 1737562041}
-  leftHandIK: {fileID: 1664528126}
-  rigLayer_BodyAim: {fileID: 345550182}
 --- !u!114 &652730575923552437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9431,6 +9568,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ed2a53234fe7e418c550258a744114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &652730575923552444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652730575923372064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bed80c6e3398c43872fee899150a0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rightHandIK: {fileID: 1737562041}
+  leftHandIK: {fileID: 1664528126}
+  rigLayer_BodyAim: {fileID: 345550182}
+  rigLayer_Hand: {fileID: 1952234582}
 --- !u!4 &652730575923553112
 Transform:
   m_ObjectHideFlags: 0

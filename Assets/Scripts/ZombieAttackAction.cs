@@ -14,6 +14,6 @@ public class ZombieAttackAction : ScriptableObject
     [Header("Attack Angles and Distances")]
     public float maxiumAttackAngle = 20f;
     public float miniumAttackAngle = -20f;
-    public float miniumAttackDistance = 0.5f;
-    public float maxiumAttackDistance = 1f;
+    public float miniumAttackDistance = 1f;
+    public float maxiumAttackDistance = 3.5f;
 }

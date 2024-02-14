@@ -33,8 +33,8 @@ public class ZombieManager : MonoBehaviour
 
     [Header("Attack")]
     public float attackCooldownTimer;
-    public float miniumAttackDistance = 0.5f;
-    public float maximumAttackDistance = 1f;
+    public float miniumAttackDistance = 1f;
+    public float maximumAttackDistance = 3.5f;
 
     private void Awake()
     {

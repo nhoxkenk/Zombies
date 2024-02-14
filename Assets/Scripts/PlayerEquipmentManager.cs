@@ -32,11 +32,11 @@ public class PlayerEquipmentManager : MonoBehaviour
     private void LoadCurrentWeapon()
     {
         weaponLoaderSlot.LoadWeaponModel(weapon);
-        playerManager.animatorManager.animator.runtimeAnimatorController = weapon.weaponAnimator;
+        playerManager.playerAnimatorManager.animator.runtimeAnimatorController = weapon.weaponAnimator;
         weaponAnimatorManager = weaponLoaderSlot.currentWeaponModel.GetComponentInChildren<WeaponAnimatorManager>();
         rightTarget = weaponLoaderSlot.currentWeaponModel.GetComponentInChildren<RightHandIKTarget>();
         leftTarget = weaponLoaderSlot.currentWeaponModel.GetComponentInChildren<LeftHandIKTarget>();
-        playerManager.animatorManager.AssignHandIK(rightTarget, leftTarget);
+        playerManager.playerAnimatorManager.AssignHandIK(rightTarget, leftTarget);
         playerManager.playerUIManager.currentAmmoCountText.text = weapon.remainingAmmo.ToString();
 
         if (playerManager.inventoryManager.currentAmmoInInventory != null)

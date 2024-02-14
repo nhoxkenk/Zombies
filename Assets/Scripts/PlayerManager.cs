@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public InputManager inputManager;
     Animator animator;
-    public AnimatorManager animatorManager;
+    public PlayerAnimatorManager playerAnimatorManager;
 
     public PlayerUIManager playerUIManager;
     public PlayerLocomotionManager locomotionManager;
@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         locomotionManager = GetComponent<PlayerLocomotionManager>();
         animator = GetComponent<Animator>();
-        animatorManager = GetComponent<AnimatorManager>();
+        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
         equipmentManager = GetComponent<PlayerEquipmentManager>();
         inventoryManager = GetComponent<PlayerInventoryManager>();
     }
