@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class ZombieCombatManager : MonoBehaviour
 {
+    ZombieManager zombie;
     [SerializeField] ZombieGrappleCollider rightHandGrappleCollider;
     [SerializeField] ZombieGrappleCollider leftHandGrappleCollider;
     private void Awake()
     {
+        zombie = GetComponent<ZombieManager>();
         LoadGrappleColliders();
     }
 
@@ -41,5 +43,15 @@ public class ZombieCombatManager : MonoBehaviour
     {
         rightHandGrappleCollider.enabled = false;
         leftHandGrappleCollider.enabled = false;
+    }
+
+    public void EnableRotationDuringAttack()
+    {
+        zombie.canRotate = true;
+    }
+
+    public void DisableRotationDuringAttack()
+    {
+        zombie.canRotate = false;
     }
 }

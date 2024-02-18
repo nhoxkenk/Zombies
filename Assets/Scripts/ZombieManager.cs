@@ -12,6 +12,7 @@ public class ZombieManager : MonoBehaviour
     [Header("Flag")]
     public bool isPerformingAction;
     public bool isDead;
+    public bool canRotate;
 
     [Header("Current state")]
     private State currentState;

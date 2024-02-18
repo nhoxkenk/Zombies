@@ -26,7 +26,7 @@ public class ZombieGrappleCollider : MonoBehaviour
             {
                 if(!playerManager.isPerformingAction && !zombie.isDead)
                 {
-                    zombie.zombieAnimatorManager.PlayGrappleAnimation("Zombie Grap", true);
+                    zombie.zombieAnimatorManager.PlayGrappleAnimation("Zombie Eat", true);
                     zombie.animator.SetFloat("Vertical", 0);
 
                     playerManager.playerAnimatorManager.ClearRigLayerHand();
@@ -36,8 +36,8 @@ public class ZombieGrappleCollider : MonoBehaviour
                     Quaternion targetZombieRotation = Quaternion.LookRotation(playerManager.transform.position - zombie.transform.position);
                     zombie.transform.rotation = targetZombieRotation;
 
-                    Quaternion targetPlayerRotation = Quaternion.LookRotation(zombie.transform.position - playerManager.transform.position);
-                    playerManager.transform.rotation = targetPlayerRotation;
+                    //Quaternion targetPlayerRotation = Quaternion.LookRotation(zombie.transform.position - playerManager.transform.position);
+                    //playerManager.transform.rotation = targetPlayerRotation;
                 }
             }
         }

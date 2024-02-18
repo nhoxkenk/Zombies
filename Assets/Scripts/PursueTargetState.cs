@@ -15,6 +15,7 @@ public class PursueTargetState : State
         //cannot do two things at the same time, like playing hit animation along with run, etc...
         if (zombieManager.isPerformingAction)
         {
+            RotateTowardsTargetWhileAttacking(zombieManager);
             zombieManager.animator.SetFloat("Vertical", 0, 0.2f, Time.deltaTime);
             return this;
         }
@@ -42,9 +43,31 @@ public class PursueTargetState : State
 
     private void RotateTowardsTarget(ZombieManager zombieManager)
     {
-        zombieManager.agent.enabled = true;
-        zombieManager.agent.SetDestination(zombieManager.currentTarget.transform.position);
-        zombieManager.transform.rotation = Quaternion.Lerp(zombieManager.transform.rotation, 
-            zombieManager.agent.transform.rotation, zombieManager.rotationSpeed / Time.deltaTime);
+        if (zombieManager.canRotate)
+        {
+            zombieManager.agent.enabled = true;
+            zombieManager.agent.SetDestination(zombieManager.currentTarget.transform.position);
+            zombieManager.transform.rotation = Quaternion.Lerp(zombieManager.transform.rotation,
+                zombieManager.agent.transform.rotation, zombieManager.rotationSpeed / Time.deltaTime);
+        }
+        
+    }
+
+    private void RotateTowardsTargetWhileAttacking(ZombieManager zombieManager)
+    {
+        if(zombieManager.canRotate)
+        {
+            Vector3 direction = zombieManager.currentTarget.transform.position - zombieManager.transform.position;
+            direction.y = 0;
+            direction.Normalize();
+
+            if(direction == Vector3.zero)
+            {
+                direction = zombieManager.transform.forward;
+            }
+
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            zombieManager.transform.rotation = Quaternion.Slerp(zombieManager.transform.rotation, targetRotation, zombieManager.rotationSpeed * Time.deltaTime);
+        }
     }
 }
